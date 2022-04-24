@@ -280,5 +280,8 @@ footer .social-links li {
     margin-left: 42px;
     color: #340079;
 }
+.github {
+   background: url(../images/githubappicon.jpg);
+}
 
 footer .social-links li:first-child { margin-left: 0; }

@@ -1,25 +1,16 @@
 import React, { Component } from 'react';
+
 export default class Footer extends Component {
   render() {
-    let resumeData = this.props.resumeData;
     return (
       <footer>
       <div className="row">
         <div className="twelve columns">
           <ul className="social-links">
-            {
-              resumeData.socialLinks && resumeData.socialLinks.map((item)=>{
-                return(
-                  <li>
-                    <a href={item.url}>
-                    <i className={item.className} />
-                    </a>
-                  </li>
-                )
-              })
-            }
+            <li><a href="https://github.com/kaisankyachan">GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/kai-whitney-4489b6221">LinkedIn</a></li>
+            <li><a href="https://stackoverflow.com/users/17214418/">Stack Overflow</a></li>
           </ul>
-          
         </div>
       </div>
     </footer>
