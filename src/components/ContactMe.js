@@ -1,64 +1,70 @@
-import React, { Component } from 'react';
-export default class ContactMe extends Component {
-  render() {
-    if(this.props.data){
-      var name = this.props.data.name;
-      var phone= this.props.data.phone;
-      var email = this.props.data.email;
-      var message = this.props.data.contactmessage;
-    }
-    return (
-      <section id="contact">
-         <div className="row section-head">
-               <h1 class="sectionh"><span>Contact Me</span></h1>
-            <div className="ten columns">
-                  <p className="lead">{message}</p>
-            </div>
-         </div>
-         <div className="row">
-            <div className="eight columns">
-               <form action="" method="post" id="contactForm" name="contactForm">
-					<fieldset>
-                  <div>
-						   <label htmlFor="contactName">Name <span className="required">*</span></label>
-						   <input type="text" defaultValue="" size="35" id="contactName" name="contactName" onChange={this.handleChange}/>
-                  </div>
-                  <div>
-						   <label htmlFor="contactEmail">Email <span className="required">*</span></label>
-						   <input type="text" defaultValue="" size="35" id="contactEmail" name="contactEmail" onChange={this.handleChange}/>
-                  </div>
-                  <div>
-						   <label htmlFor="contactSubject">Subject</label>
-						   <input type="text" defaultValue="" size="35" id="contactSubject" name="contactSubject" onChange={this.handleChange}/>
-                  </div>
-                  <div>
-                     <label htmlFor="contactMessage">Message <span className="required">*</span></label>
-                     <textarea cols="50" rows="15" id="contactMessage" name="contactMessage"></textarea>
-                  </div>
-                  <div>
-                     <button className="submit">Submit</button>
-                     <span id="image-loader">
-                        <img alt="" src="images/loader.gif" />
-                     </span>
-                  </div>
-					</fieldset>
-				   </form>
-           <div id="message-warning"> Error </div>
-				   <div id="message-success">
-                  <i className="fa fa-check"></i>Your message was sent, thank you!<br />
-				   </div>
-           </div>
-            <aside className="four columns footer-widgets">
-               <div className="widget widget_contact">
-					   <p className="address">
-						   {name}<br />
-						   <span>{phone}</span><br />
-                     <span>{email}</span><br />
-					   </p>
-				   </div>
-            </aside>
-      </div>
-   </section>
-    );
-  }
+import React, { useState } from 'react';
+function validateEmail(email) {
+   var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+   return re.test(String(email).toLowerCase());
 }
+
+export default function ContactMe() {
+   const [formState, setFormState] = useState({ name: '', email: '', message: '' });
+   const [errorMessage, setErrorMessage] = useState('');
+   const { name, email, message } = formState;
+   //SUBMITTING
+   const handleSubmit = (e) => {
+     e.preventDefault();
+     if (!errorMessage) {
+       console.log('Submit Form', formState);
+     }
+   };
+   //ERRORS
+   const handleChange = (e) => {
+     if (e.target.name === 'email') {
+       const isValid = validateEmail(e.target.value);
+       if (!isValid) {
+         setErrorMessage('Your email is invalid.');
+       } else {
+         setErrorMessage('');
+       }
+     } else {
+       if (!e.target.value.length) {
+         setErrorMessage(`${e.target.name} is required.`);
+       } else {
+         setErrorMessage('');
+       }
+     }
+     if (!errorMessage) {
+       setFormState({ ...formState, [e.target.name]: e.target.value });
+       console.log('Handle Form', formState);
+     }
+   };
+   //FORM
+   return (
+     <section id="contact">
+       <h1 class="sectionh"><span>Contact Me</span></h1>
+       <form id="contactForm" onSubmit={handleSubmit}>
+         <div className="contacts">
+            <span className="required">*</span>
+            <label className="contactLabel" htmlFor="name">Name</label>
+           <input type="text" className="contactInput" name="contactName" defaultValue={name} onBlur={handleChange} />
+         </div>
+         <div className="contacts">
+            <span className="required">*</span>
+            <label className="contactLabel" htmlFor="email">Email address</label>
+           <input type="email" className="contactInput" name="contactEmail" defaultValue={email} onBlur={handleChange} />
+         </div>
+         <div className="contacts">
+            <span className="required">*</span>
+            <label className="contactLabel" htmlFor="message">Message</label>
+           <textarea name="contactMessage" className="contactInput" rows="5" defaultValue={message} onBlur={handleChange} />
+         </div>
+         {/* ERRORS */}
+         {errorMessage && (
+           <div>
+             <p className="error-text">{errorMessage}</p>
+           </div>
+         )}
+         {/* SUBMIT */}
+         <button type="submit" className="submit">Submit</button>
+       </form>
+     </section>
+   );
+ }

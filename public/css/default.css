@@ -15,7 +15,7 @@ fieldset, form, footer, header, menu, nav, section {
 }
 
 body {
-   background: #fff;
+   background: rgb(138, 132, 148);
    font-family: 'Lucida Console', sans-serif;
    font-weight: normal;
    font-size: 15px;
@@ -36,8 +36,6 @@ p.lead {
    font: 19px/36px 'opensans-light', sans-serif;
    margin-bottom: 18px;
 }
-
-hr { border: solid #E3E3E3; border-width: 1px 0 0; clear: both; margin: 11px 0 30px; height: 0; }
 
 a:hover, a:focus { color: #340079; }
 p a, p a:visited { line-height: inherit; }
@@ -96,13 +94,6 @@ textarea { min-height: 220px; }
     margin: 0 auto;
 }
 
-.row.collapsed > .column,
-.row.collapsed > .columns,
-.column.collapsed, .columns.collapsed  { padding: 0; }
-
-[class*="column"] + [class*="column"]:last-child { float: right; }
-[class*="column"] + [class*="column"].end { float: right; }
-
 .row .one         { width: 8.33333%; }
 .row .two         { width: 16.66667%; }
 .row .three       { width: 25%; }
@@ -115,51 +106,3 @@ textarea { min-height: 220px; }
 .row .ten         { width: 83.33333%; }
 .row .eleven      { width: 91.66667%; }
 .row .twelve      { width: 100%; }
-
-.bgrid-sixths [class*="column"]   { width: 16.66667%; }
-.bgrid-quarters [class*="column"] { width: 25%; }
-.bgrid-thirds [class*="column"]   { width: 33.33333%; }
-.bgrid-halves [class*="column"]   { width: 50%; }
-
-[class*="bgrid"] [class*="column"] + [class*="column"]:last-child { float: left; }
-
-.first { clear: left; }   /* first column in default screen */
-.s-first { clear: none; } /* first column in smaller screens */
-
-@media only screen and (max-width: 900px) {
-
-   .s-bgrid-sixths [class*="column"]   { width: 16.66667%; }
-   .s-bgrid-quarters [class*="column"] { width: 25%; }
-   .s-bgrid-thirds [class*="column"]   { width: 33.33333%; }
-   .s-bgrid-halves [class*="column"]   { width: 50%; }
-
-   .first { clear: none; }
-   .s-first { clear: left; }
-
-}
-
-@media only screen and (max-width: 767px) {
-
-   .row {
-	   width: 460px;
-	   margin: 0 auto;
-      padding: 0;
-	}
-   .column, .columns {
-	   width: auto !important;
-	   float: none;
-	   margin-left: 0;
-	   margin-right: 0;
-      padding: 0 30px;
-   }
-   .row .row { width: auto; max-width: none; margin: 0 -30px; }
-
-   [class*="column"] + [class*="column"]:last-child { float: none; }
-   [class*="bgrid"] [class*="column"] + [class*="column"]:last-child { float: none; }
-}
-
-@media only screen and (max-width: 460px) {
-
-   .row { width: auto; }
-
-}

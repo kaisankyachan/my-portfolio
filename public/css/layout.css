@@ -6,12 +6,15 @@ header {
    text-align: center;
    z-index: 10;
 }
-#nav-wrap ul, #nav-wrap li, #nav-wrap a {
+ul, li, a {
    margin: 0;
    padding: 0;
    border: none;
    outline: none;
    background: black;
+   list-style-type: none;
+   text-decoration: none;
+   color: white;
 }
 #nav-wrap {
    font: bold 12px 'Lucida Console', sans-serif;
@@ -37,7 +40,6 @@ ul#nav li a {
    padding: 8px 13px;
    line-height: 32px;
    text-align: left;
-   color: #fff;
    font-size: 15px;
 }
 ul#nav li.current a { color: #5b00d3; }
@@ -51,9 +53,6 @@ ul#nav li.current a { color: #5b00d3; }
    padding-bottom: 50px;
    overflow: hidden;
 }
-
-#about a:hover, #about a:focus { color: #340079; }
-
 #about h1 {
    font: 40px 'Lucidatypewriter', sans-serif;
    color: #fff;
@@ -64,7 +63,7 @@ ul#nav li.current a { color: #5b00d3; }
    font: 20px 'Lucida Console';
    color: #ffffff;
 }
-#about .profile-image {
+.profile-image {
    background: url(../images/profileimage.png);
    background-size: contain;
    background-repeat: no-repeat;
@@ -74,12 +73,11 @@ ul#nav li.current a { color: #5b00d3; }
 
 /*RESUME*/
 #resume {
-   background: rgb(138, 132, 148);
    padding-top: 90px;
    padding-bottom: 72px;
    overflow: hidden;
 }
-#resume a:hover, #resume a:focus { 
+#resumel a:hover, #resumel a:focus { 
    color: #5b00d3; 
 }
 .sectionh {
@@ -89,6 +87,7 @@ ul#nav li.current a { color: #5b00d3; }
    height: 100%;
    width: 200px;
    float: left;
+   margin-top: 20px;
 }
 .sectionh span {
    border-bottom: 3px solid #5b00d3;
@@ -107,114 +106,41 @@ ul#nav li.current a { color: #5b00d3; }
 
 /*PORTFOLIO*/
 #portfolio {
-   background: rgb(138, 132, 148);
    padding-top: 90px;
    padding-bottom: 60px;
 }
-#portfolio-wrapper {
+.item-img {
+   height: 200px;
+   width: 300px;
+}
+.item-wrap {
+   display: flex;
+   flex-flow: row wrap;
+   justify-content: center;
    float: right;
-}
-#portfolio-wrapper .columns { margin-bottom: 36px; }
-.portfolio-item .item-wrap {
-   background: rgb(138, 132, 148);
-   overflow: hidden;
-   position: relative;
-}
-.portfolio-item .item-wrap a {
-   display: block;
-}
-.portfolio-item .item-wrap .overlay {
-   position: absolute;
-   left: 0;
-   top: 0;
-   width: 100%;
-   height: 100%;
-}
-.portfolio-item .item-wrap .link-icon {
-   display: block;
-   color: #fff;
-   height: 30px;
-   width: 30px;
-   font-size: 18px;
-   line-height: 30px;
-   text-align: center;
-   position: absolute;
-   top: 50%;
-   left: 50%;
-   margin-left: -15px;
-   margin-top: -15px;
-}
-.portfolio-item .item-wrap img {
-   vertical-align: bottom;
-}
-.portfolio-item .portfolio-item-meta { padding: 18px }
-.portfolio-item .portfolio-item-meta h5 {
-   font: 14px/21px 'Lucida Console', sans-serif;
-   color: #fff;
-}
-.portfolio-item .portfolio-item-meta p {
-   font: 12px/18px 'Lucida Console', sans-serif;
-   color: #c6c7c7;
-   margin-bottom: 0;
-}
-
-/* FLEX */
-.flex-control-nav {
-    width: 100%;
-    position: absolute;
-    bottom: -20px;
-    text-align: left;
-}
-.flex-control-nav li {
-    margin: 0 6px;
-    display: inline-block;
-    zoom: 1;
-    *display: inline;
-}
-.flex-control-paging li a {
-    width: 12px;
-    height: 12px;
-    display: block;
-    background: #ddd;
-    background: rgba(255, 255, 255, .3);
-    cursor: pointer;
-    text-indent: -9999px;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    -o-border-radius: 20px;
-    border-radius: 20px;
-    box-shadow: inset 0 0 3px rgba(255, 255, 255, .3);
-}
-.flex-control-paging li a:hover {
-    background: #CCC;
-    background: rgba(255, 255, 255, .7);
-}
-.flex-control-paging li a.flex-active {
-    background: #fff;
-    background: rgba(255, 255, 255, .9);
-    cursor: default;
 }
 
 /* Contact */
-#contact {
-   background: rgb(138, 132, 148);
-   padding-top: 96px;
-   padding-bottom: 102px;
+#contactForm {
+   width: 500px;
 }
-#contact .section-head { margin-bottom: 42px; }
-
-#contact a:hover, #contact a:focus { color: #fff; }
-
-#contact form { margin-bottom: 30px; }
-#contact label {
+.contacts {
+   display: flex;
+   flex-flow: row wrap;
+   justify-content: center;
+   float: right;
+}
+#contact span.required {
+	color: #5b00d3;
+	font-size: 13px;
+   float: left;
+}
+.contactLabel {
    font: 15px/24px 'Lucida Console', sans-serif;
    margin: 12px 0;
 	float: left;
-   width: 26%;
 }
-#contact input,
-#contact textarea,
-#contact select {
+.contactInput {
    padding: 18px 20px;
 	background: #cecbd1;
 	margin-bottom: 42px;
@@ -222,9 +148,10 @@ ul#nav li.current a { color: #5b00d3; }
 	outline: none;
    font-size: 15px;
    line-height: 24px;
-   width: 65%;
+   width: 200px;
+   float: right;
 }
-#contact button.submit {
+.submit {
 	text-transform: uppercase;
 	letter-spacing: 3px;
 	color:#fff;
@@ -234,28 +161,9 @@ ul#nav li.current a { color: #5b00d3; }
    display: inline-block;
    margin-left: 26%;
 }
-#contact button.submit:hover {
+.submit:hover {
 	color: #0D0D0D;
 	background: #5b00d3;
-}
-#contact span.required {
-	color: #5b00d3;
-	font-size: 13px;
-}
-#message-warning, #message-success {
-   display: none;
-	background: #0F0F0F;
-	padding: 24px 24px;
-	margin-bottom: 36px;
-   width: 65%;
-   margin-left: 26%;
-}
-#message-warning { color: #680a0a; }
-#message-success { color: #8623c0; }
-
-#message-warning i,
-#message-success i {
-   margin-right: 10px;
 }
 
 /* Footer */
@@ -266,8 +174,8 @@ footer {
    font-size: 14px;
    text-align: center;
    position: relative;
+   background-color: white;
 }
-
 footer .social-links {
    margin: 18px 0 30px 0;
    padding: 0;
@@ -278,10 +186,4 @@ footer .social-links li {
     margin: 0;
     padding: 0;
     margin-left: 42px;
-    color: #340079;
 }
-.github {
-   background: url(../images/githubappicon.jpg);
-}
-
-footer .social-links li:first-child { margin-left: 0; }

@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
+
 export default class Header extends Component {
   render() {
     return (
-      <React.Fragment>
       <header>
          <nav id="nav-wrap">
-            <ul id="nav" className="nav">
-               <li className="current"><a href="#about">About</a></li>
-             <li><a href="#resume">Resume</a></li>
-               <li><a href="#portfolio">Portfolio</a></li>
-               <li><a href="#contact">Contact</a></li>
+            <ul id="nav">
+               <li><a id="aboutl" href="#about">About</a></li>
+             <li><a id="resumel" href="#resume">Resume</a></li>
+               <li><a id="portfoliol" href="#portfolio">Portfolio</a></li>
+               <li><a id="contactl" href="#contact">Contact</a></li>
             </ul>
          </nav>
       </header>
-      </React.Fragment>
     );
   }
 }
